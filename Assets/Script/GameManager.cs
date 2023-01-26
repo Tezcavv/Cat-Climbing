@@ -4,15 +4,25 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.VFX;
 
+
+
 public class GameManager : MonoBehaviour
 {
+    
+    private enum Directions {
+        Left, Right
+    }
+
     // Start is called before the first frame update
     [SerializeField]
     GameObject prefab;
     [SerializeField]
+    GameObject delCazzo;
+    [SerializeField]
     [Range(1, 40)]
     private int numEsagoni;
     List<GameObject> terreni;
+
 
     GameObject first => terreni[0];
     GameObject last => terreni.LastOrDefault();
@@ -20,12 +30,42 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
        SpawnTerrain();
+
     }
 
     private void Update() {
         if (first.transform.position.z <=-100) {
             ResetTerrain();
         }
+        if (Input.GetKeyDown(KeyCode.D)) {
+            RotateExagon(Directions.Right);
+        } else if (Input.GetKeyDown(KeyCode.A)) {
+            RotateExagon(Directions.Left);
+        }
+
+    }
+
+    void RotateExagon(Directions direction) {
+
+        Vector3 res= Vector3.zero;
+        if (direction == Directions.Left) {
+            res = Vector3.forward;
+        }else if(direction == Directions.Right) {
+            res = Vector3.back;
+        }
+        //uccidetemi
+        foreach (GameObject terreno in terreni) {
+            terreno.transform.RotateAround(delCazzo.transform.position, res, 60f);
+        }
+
+
+
+    }
+
+    private IEnumerator ResetMovingBoolean() {
+
+        yield return new WaitForSeconds(2);
+        
     }
 
 
@@ -47,4 +87,6 @@ public class GameManager : MonoBehaviour
         terreni.Add(temp);
 
     }
+
+
 }
