@@ -6,7 +6,9 @@ public class Movement : MonoBehaviour
 {
 
     [SerializeField]
-    private int speed;
+    private float speed;
+
+    public float Speed { get { return speed; } set { speed = value; } }
 
     [SerializeField]
     private GameManager gameManager;

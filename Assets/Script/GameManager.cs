@@ -42,6 +42,13 @@ public class GameManager : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.A)) {
             RotateExagon(Directions.Left);
         }
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    terreni.ForEach(t => t.GetComponent<Movement>().Speed += 1 );
+        //}else if (Input.GetKey(KeyCode.S))
+        //{
+        //    terreni.ForEach(t => t.GetComponent<Movement>().Speed -= 0.2f );
+        //}
 
     }
 
@@ -81,6 +88,14 @@ public class GameManager : MonoBehaviour
 
     public void ResetTerrain() {
         first.transform.position = last.transform.position + new Vector3(0,0,100);
+        List<GameObject> listPlanes = new List<GameObject>();
+        TerrainManager currentScript;
+        foreach(Transform child in first.transform)
+        {
+            currentScript = child.GetComponent<TerrainManager>();
+            currentScript.DeactivateAllObstacles();
+            currentScript.SetObstacles(currentScript.currentObstacles);  
+        }
 
         GameObject temp = first;
         terreni.Remove(first);

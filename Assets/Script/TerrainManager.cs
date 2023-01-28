@@ -1,38 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TerrainManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject obstacle;
-    [SerializeField]
-    private int numberOfOstacles;
     private List<GameObject> obstacles;
-    private float randomNum;
+
+    public List<GameObject> ObstaclesList => obstacles;
+
+    public int currentObstacles = 1;
+    
     // Start is called before the first frame update
     void Start()
     {
-        obstacles = new List<GameObject>();
-        for(int i = 0; i < numberOfOstacles; i++)
-        {
-            SpawnObstacles();
-        }
+        DeactivateAllObstacles();
+        SetObstacles(currentObstacles);
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach(GameObject ob in obstacles)
+        
+    }
+    public void DeactivateAllObstacles()
+    {
+        foreach(GameObject go in ObstaclesList)
         {
-            ob.transform.SetPositionAndRotation(transform.position + new Vector3(0, 1, 0), transform.rotation);
+            go.SetActive(false);
         }
     }
 
-    public void SpawnObstacles() {
+    public void SetObstacles(int numberOfObstacles) {
 
-        GameObject temp = GameObject.Instantiate(obstacle);
-        obstacles.Add(temp);
+        int numOfObstacles = obstacles.Count;
+        int randomIndex;
+
+         for (int i = 0; i < numberOfObstacles; i++)
+         {
+            randomIndex = Random.Range(0, numOfObstacles);
+            obstacles[randomIndex].SetActive(true);
+         }
 
     }
 }
