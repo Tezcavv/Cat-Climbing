@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
 
 
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     [Range(1, 40)]
     private int numEsagoni;
     List<GameObject> esagoni;
+    private bool isGamePaused;
 
 
     GameObject first => esagoni[0];
@@ -31,7 +34,8 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
 
-       SpawnTerrain();
+        isGamePaused = false;
+        SpawnTerrain();
 
     }
 
@@ -43,6 +47,32 @@ public class GameManager : MonoBehaviour
             RotateExagon(Directions.Right);
         } else if (Input.GetKey(KeyCode.A)) {
             RotateExagon(Directions.Left);
+        }
+
+        ProcessPause();
+        ProcessExit();
+    }
+
+    void ProcessExit()
+    {
+        if(Input.GetKey(KeyCode.RightShift)) {
+            Application.Quit();
+        }
+    }
+
+    void ProcessPause()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && !isGamePaused)
+        {
+            Time.timeScale = 0f;
+            isGamePaused= true;
+            return;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape) && isGamePaused) {
+            Time.timeScale = 1f;
+            isGamePaused= false;
+            return;
         }
     }
 
