@@ -13,43 +13,37 @@ public class GameManager : MonoBehaviour
         Left, Right
     }
 
+    [SerializeField]
+    float rotationSpeed;
+
     // Start is called before the first frame update
     [SerializeField]
     GameObject prefab;
     [SerializeField]
-    GameObject delCazzo;
-    [SerializeField]
     [Range(1, 40)]
     private int numEsagoni;
-    List<GameObject> terreni;
+    List<GameObject> esagoni;
 
 
-    GameObject first => terreni[0];
-    GameObject last => terreni.LastOrDefault();
+    GameObject first => esagoni[0];
+    GameObject last => esagoni.LastOrDefault();
 
 
     private void Start() {
+
        SpawnTerrain();
 
     }
 
     private void Update() {
-        if (first.transform.position.z <=-100) {
+        if (first.transform.position.z <=-70) {
             ResetTerrain();
         }
-        if (Input.GetKeyDown(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.D)) {
             RotateExagon(Directions.Right);
-        } else if (Input.GetKeyDown(KeyCode.A)) {
+        } else if (Input.GetKey(KeyCode.A)) {
             RotateExagon(Directions.Left);
         }
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    terreni.ForEach(t => t.GetComponent<Movement>().Speed += 1 );
-        //}else if (Input.GetKey(KeyCode.S))
-        //{
-        //    terreni.ForEach(t => t.GetComponent<Movement>().Speed -= 0.2f );
-        //}
-
     }
 
     void RotateExagon(Directions direction) {
@@ -60,46 +54,39 @@ public class GameManager : MonoBehaviour
         }else if(direction == Directions.Right) {
             res = Vector3.back;
         }
-        //uccidetemi
-        foreach (GameObject terreno in terreni) {
-            terreno.transform.RotateAround(delCazzo.transform.position, res, 60f);
+        
+        foreach (GameObject esagono in esagoni) {
+            esagono.transform.Rotate(res * (rotationSpeed * Time.deltaTime));
         }
 
 
 
-    }
-
-    private IEnumerator ResetMovingBoolean() {
-
-        yield return new WaitForSeconds(2);
-        
     }
 
 
     public void SpawnTerrain() {
-        terreni = new List<GameObject>();
+        esagoni = new List<GameObject>();
 
         GameObject temp;
         for (int i = 0; i < numEsagoni; i++) {
-            temp = Instantiate(prefab, new Vector3(0, 0, i * 100), Quaternion.identity);
-            terreni.Add(temp);
+            temp = Instantiate(prefab, new Vector3(0, 0, i * 30), Quaternion.identity);
+            esagoni.Add(temp);
         }
     }
 
     public void ResetTerrain() {
-        first.transform.position = last.transform.position + new Vector3(0,0,100);
-        List<GameObject> listPlanes = new List<GameObject>();
-        TerrainManager currentScript;
-        foreach(Transform child in first.transform)
-        {
-            currentScript = child.GetComponent<TerrainManager>();
-            currentScript.DeactivateAllObstacles();
-            currentScript.SetObstacles(currentScript.currentObstacles);  
-        }
+        first.transform.position = last.transform.position + new Vector3(0,0,30);
+        
+        TerrainManager terrainManager;
+
+        terrainManager = first.GetComponent<TerrainManager>();
+        terrainManager.DeactivateAllObstacles();
+        terrainManager.SetObstacles(terrainManager.currentObstacles);
+        
 
         GameObject temp = first;
-        terreni.Remove(first);
-        terreni.Add(temp);
+        esagoni.Remove(first);
+        esagoni.Add(temp);
 
     }
 

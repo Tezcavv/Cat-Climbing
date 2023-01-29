@@ -8,13 +8,24 @@ public class TerrainManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> obstacles;
 
-    public List<GameObject> ObstaclesList => obstacles;
 
     public int currentObstacles = 1;
     
     // Start is called before the first frame update
     void Start()
     {
+        obstacles = new List<GameObject>();
+        List<GameObject> listChildren = GetDirectChildren(gameObject);
+
+        foreach (GameObject plane in listChildren)
+        {
+            List<GameObject>listChildr2= GetDirectChildren(plane);
+
+            foreach (GameObject obstacle in listChildr2)
+            {
+                obstacles.Add(obstacle);
+            }
+        }
         DeactivateAllObstacles();
         SetObstacles(currentObstacles);
     }
@@ -26,7 +37,7 @@ public class TerrainManager : MonoBehaviour
     }
     public void DeactivateAllObstacles()
     {
-        foreach(GameObject go in ObstaclesList)
+        foreach(GameObject go in obstacles)
         {
             go.SetActive(false);
         }
@@ -44,4 +55,17 @@ public class TerrainManager : MonoBehaviour
          }
 
     }
+
+    private List<GameObject> GetDirectChildren(GameObject gameObject)
+    {
+        List<GameObject> result = new List<GameObject>();
+        
+        for(int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            GameObject gameObjectToAdd = gameObject.transform.GetChild(i).gameObject;
+            result.Add(gameObjectToAdd);
+        }
+        return result;
+    }
+    
 }
