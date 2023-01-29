@@ -59,20 +59,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void ProcessPause()
+    public void ProcessPause()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !isGamePaused)
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnpause();
+        }
+
+        
+    }
+
+    public void PauseUnpause()
+    {
+        if (!isGamePaused)
         {
             Time.timeScale = 0f;
-            isGamePaused= true;
+            isGamePaused = true;
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape) && isGamePaused) {
-            Time.timeScale = 1f;
-            isGamePaused= false;
-            return;
-        }
+        Time.timeScale = 1f;
+        isGamePaused = false;
+        
     }
 
     void RotateExagon(Directions direction) {
