@@ -579,5 +579,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 130
+  rotationTime: 1
   prefab: {fileID: 6878943712340503996, guid: 5148afd56865f6d489208b12eb212fbb, type: 3}
   numEsagoni: 12

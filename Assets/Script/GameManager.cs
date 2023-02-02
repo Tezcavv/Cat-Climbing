@@ -7,15 +7,16 @@ using UnityEngine.VFX;
 
 
 
-public class GameManager : MonoBehaviour
-{
-    
+public class GameManager : MonoBehaviour {
+
     private enum Directions {
         Left, Right
     }
 
     [SerializeField]
     float rotationSpeed;
+    [SerializeField]
+    float rotationTime = 1.0f;
 
     // Start is called before the first frame update
     [SerializeField]
@@ -26,53 +27,141 @@ public class GameManager : MonoBehaviour
     List<GameObject> esagoni;
     private bool isGamePaused;
 
+    private Vector3 firstPos;   //First touch position
+    private Vector3 lastPos;   //Last touch position
+    private float dragDistance;  //minimum distance for a swipe to be registered
+    private Touch touch;
 
-    GameObject first => esagoni[0];
-    GameObject last => esagoni.LastOrDefault();
+    public enum Axis { X, Y }
+
+    GameObject First => esagoni[0];
+    GameObject Last => esagoni.LastOrDefault();
 
 
     private void Start() {
 
         isGamePaused = false;
         SpawnTerrain();
+        if(IsOnMobile()) {
+            dragDistance = Screen.height * 15 / 100;
+        }
 
     }
 
     private void Update() {
-        if (first.transform.position.z <=-70) {
+        if (First.transform.position.z <= -70) {
             ResetTerrain();
         }
-        if (Input.GetKey(KeyCode.D)) {
-            RotateExagon(Directions.Right);
-        } else if (Input.GetKey(KeyCode.A)) {
-            RotateExagon(Directions.Left);
-        }
 
-        ProcessPause();
-        ProcessExit();
+        ProcessControls();
+
+        if(IsOnPc()) {
+            ProcessPause();
+            ProcessExit();
+        }
+        
     }
 
-    void ProcessExit()
-    {
-        if(Input.GetKey(KeyCode.RightShift)) {
+    void ProcessControlsOnMobile() {
+
+        if (Input.touchCount != 1) {
+            return;
+        }
+
+        touch = Input.GetTouch(0);
+
+        if (touch.phase == TouchPhase.Began) {
+            firstPos = touch.position;
+            lastPos = touch.position;
+            return;
+        }
+        if (touch.phase == TouchPhase.Moved) {
+            lastPos = touch.position;
+            return;
+        }
+        if (touch.phase != TouchPhase.Ended) {
+            return;
+        }
+        lastPos = touch.position;
+
+        if (!isDraggedEnough(Axis.X) ) {
+            return;
+        }
+
+        StartCoroutine(RotateObject());
+
+    }
+
+    IEnumerator RotateObject() {
+        float elapsedTime = 0.0f;
+        float targetAngle = 360.0f;
+        float startAngle = transform.eulerAngles.y;
+        float angle = 0.0f;
+
+        while (elapsedTime < rotationTime) {
+            elapsedTime += Time.deltaTime;
+            angle = Mathf.Lerp(startAngle, targetAngle, elapsedTime / rotationTime) % 360;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, angle, transform.eulerAngles.z);
+            yield return null;
+        }
+    }
+
+    private bool isDraggedEnough(Axis ax) {
+        if (ax == Axis.X) {
+            return Mathf.Abs(lastPos.x - firstPos.x) > dragDistance;
+        }
+        if (ax == Axis.Y) {
+            return Mathf.Abs(lastPos.y - firstPos.y) > dragDistance;
+        }
+
+        return false;
+
+    }
+
+
+    void ProcessControls() {
+
+        if (IsOnPc()) {
+            ProcessControlsOnPc();
+            return;
+        }
+        if (IsOnMobile()) {
+            ProcessControlsOnMobile();
+            return;
+        }
+
+    }
+
+    void ProcessControlsOnPc() {
+
+        if (Input.GetKey(KeyCode.D)) {
+            RotateExagon(Directions.Right);
+        }
+        else if (Input.GetKey(KeyCode.A)) {
+            RotateExagon(Directions.Left);
+        }
+    }
+
+
+    void ProcessExit() {
+
+        
+
+        if (Input.GetKey(KeyCode.RightShift)) {
             Application.Quit();
         }
     }
 
-    public void ProcessPause()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
+    public void ProcessPause() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             PauseUnpause();
         }
 
-        
+
     }
 
-    public void PauseUnpause()
-    {
-        if (!isGamePaused)
-        {
+    public void PauseUnpause() {
+        if (!isGamePaused) {
             Time.timeScale = 0f;
             isGamePaused = true;
             return;
@@ -80,18 +169,19 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
         isGamePaused = false;
-        
+
     }
 
     void RotateExagon(Directions direction) {
 
-        Vector3 res= Vector3.zero;
+        Vector3 res = Vector3.zero;
         if (direction == Directions.Left) {
             res = Vector3.forward;
-        }else if(direction == Directions.Right) {
+        }
+        else if (direction == Directions.Right) {
             res = Vector3.back;
         }
-        
+
         foreach (GameObject esagono in esagoni) {
             esagono.transform.Rotate(res * (rotationSpeed * Time.deltaTime));
         }
@@ -112,19 +202,27 @@ public class GameManager : MonoBehaviour
     }
 
     public void ResetTerrain() {
-        first.transform.position = last.transform.position + new Vector3(0,0,30);
-        
+        First.transform.position = Last.transform.position + new Vector3(0, 0, 30);
+
         TerrainManager terrainManager;
 
-        terrainManager = first.GetComponent<TerrainManager>();
+        terrainManager = First.GetComponent<TerrainManager>();
         terrainManager.DeactivateAllObstacles();
         terrainManager.SetObstacles(terrainManager.currentObstacles);
-        
 
-        GameObject temp = first;
-        esagoni.Remove(first);
+
+        GameObject temp = First;
+        esagoni.Remove(First);
         esagoni.Add(temp);
 
+    }
+
+    bool IsOnPc() {
+        return false;// SystemInfo.deviceType == DeviceType.Desktop;
+    }
+
+    bool IsOnMobile() {
+        return true;//SystemInfo.deviceType == DeviceType.Handheld;
     }
 
 
