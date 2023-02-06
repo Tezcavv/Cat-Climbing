@@ -23,8 +23,7 @@ public class ObstacleCollider : MonoBehaviour
             return;
         }
 
-        GameManager gm = FindObjectOfType<GameManager>();
-        gm.PauseUnpause();
+        GameManager.Pause();
     }
 
 }
