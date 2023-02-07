@@ -19,7 +19,7 @@ public class ControllerMobile : MonoBehaviour,IController
     void Start() {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        dragDistance = Screen.height * screenPercentage / 100;
+        dragDistance = Screen.width * screenPercentage / 100;
     }
 
     // Update is called once per frame
@@ -52,6 +52,10 @@ public class ControllerMobile : MonoBehaviour,IController
             return;
         }
         lastPos = touch.position;
+
+        if (!IsDraggedEnough() && GameManager.isGamePaused) {
+            GameManager.Pause();
+        }
     }
     public Direction GetRotationDirection() {
 
@@ -79,9 +83,7 @@ public class ControllerMobile : MonoBehaviour,IController
 
     private bool IsDraggedEnough() {
         bool result = Mathf.Abs(lastPos.x - firstPos.x) > dragDistance;
-        if (!result && GameManager.isGamePaused) {
-            GameManager.Pause();
-        }
+
         return result;
     }
 

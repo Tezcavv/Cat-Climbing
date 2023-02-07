@@ -112,8 +112,8 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Muovo in direzione");
         foreach (GameObject esagono in esagoni) {
 
-            zDestination = esagono.gameObject.transform.rotation.eulerAngles.z + ( chosenRotation * direction );
-            Debug.Log("From " + esagono.gameObject.transform.rotation.z + " to " + zDestination);
+            zDestination = esagono.transform.rotation.eulerAngles.z + ( chosenRotation * direction );
+            Debug.Log("From " + esagono.transform.rotation.z + " to " + zDestination);
             destination = new Vector3(0, 0, zDestination);
             esagono.transform.DORotate(destination, jumpTime,RotateMode.FastBeyond360);
         }     
