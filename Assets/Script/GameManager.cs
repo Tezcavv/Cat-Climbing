@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     float mobileScreenPercentage;
     [SerializeField]
-    float jumpTime;
-    [SerializeField]
     GameObject exagonPrefab;
     [SerializeField]
     [Range(1, 40)]
@@ -25,10 +23,17 @@ public class GameManager : MonoBehaviour {
     private bool canJump = true;
     GameObject First => esagoni[0];
     GameObject Last => esagoni.LastOrDefault();
+    [SerializeField]
+    float jumpTime;
+    [Range(0, 2)]
+    public float jumpCooldown;
+    private Vector3 destination;
 
     private void Start() {
+
+        destination= transform.rotation.eulerAngles;
+
         isGamePaused= false;
-        jumpTime = 1.0f;
 
         if (SystemInfo.deviceType == DeviceType.Desktop) {
             controller = gameObject.AddComponent<ControllerPc>();
@@ -100,24 +105,23 @@ public class GameManager : MonoBehaviour {
             return;
         }
         canJump = false;
-        float zDestination = 0;
+        float zDestination;
         int direction = 0;
-        Vector3 destination;
 
         if (dir == Direction.Left) {
             direction = 1;
         } else if (dir == Direction.Right) {
             direction = -1;
         }
-        Debug.Log("Muovo in direzione");
-        foreach (GameObject esagono in esagoni) {
 
-            zDestination = esagono.transform.rotation.eulerAngles.z + ( chosenRotation * direction );
-            Debug.Log("From " + esagono.transform.rotation.z + " to " + zDestination);
-            destination = new Vector3(0, 0, zDestination);
-            esagono.transform.DORotate(destination, jumpTime,RotateMode.FastBeyond360);
+        Debug.Log("direzione iniziale: " + destination);
+        zDestination = destination.z + (chosenRotation * direction);
+        destination = new Vector3(0, 0, zDestination);
+        foreach (GameObject esagono in esagoni) {
+            Debug.Log("From " + destination.z + " to " + zDestination);
+            esagono.transform.DORotate(destination, jumpTime,RotateMode.Fast);
         }     
-        Invoke("Cooldown", jumpTime - 0.3f);
+        Invoke(nameof(Cooldown), jumpCooldown);
     }
 
     void Cooldown() {

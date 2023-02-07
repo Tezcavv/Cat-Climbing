@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3363743094020400742}
   - component: {fileID: 1160699661264695120}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: DioBrandoCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
