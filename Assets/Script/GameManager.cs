@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour {
     [Range(0, 2)]
     public float jumpCooldown;
     private Vector3 destination;
+    public PlayerJump player;
+    public float maxHeightForMovement;
 
     private void Start() {
 
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour {
             controller = gameObject.AddComponent<ControllerMobile>();
             GetComponent<ControllerMobile>().ScreenPercentage=mobileScreenPercentage;
         }
-
+        
         SpawnTerrain();
 
     }
@@ -51,13 +53,17 @@ public class GameManager : MonoBehaviour {
             ResetTerrain();
         }
 
-        if (controller.InputIsValid()) {
+        if (controller.InputIsValid() && CanMove()) {
             Direction dir = controller.GetRotationDirection();
             RotateExagon(dir);
         }
 
         controller.ManagePause();
         controller.ManageExit();
+    }
+
+    public bool CanMove() {
+        return player.transform.position.y <= maxHeightForMovement;
     }
 
     public void SpawnTerrain() {
