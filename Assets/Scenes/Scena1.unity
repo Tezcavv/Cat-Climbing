@@ -263,6 +263,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 894129422, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
+      propertyPath: rayCastDistance
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 894129422, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
       propertyPath: minHeightForMovement
       value: -2.3
       objectReference: {fileID: 0}
