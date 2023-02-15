@@ -28,7 +28,7 @@ public class ControllerPc : MonoBehaviour,IController
     }
 
 
-    public Direction GetRotationDirection() {
+    public Direction GetDirection() {
         if (Input.GetKeyDown(KeyCode.D)) {
             return Direction.Right;
         } else if (Input.GetKeyDown(KeyCode.A)) {

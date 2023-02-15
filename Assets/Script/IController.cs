@@ -7,7 +7,7 @@ public enum Direction { Left, Right, Up , Nothing }
 public interface IController {
 
     bool InputIsValid();
-    Direction GetRotationDirection();
+    Direction GetDirection();
     void ManagePause();
 
     void ManageExit();

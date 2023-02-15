@@ -59,7 +59,7 @@ public class ControllerMobile : MonoBehaviour,IController
             GameManager.Pause();
         }
     }
-    public Direction GetRotationDirection() {
+    public Direction GetDirection() {
 
         if(lastPos.y - firstPos.y > 0 && lastPos.y - firstPos.y >= dragDistanceY) {
             ResetPos();

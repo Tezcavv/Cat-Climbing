@@ -53,9 +53,9 @@ public class GameManager : MonoBehaviour {
             ResetTerrain();
         }
 
-        if (controller.InputIsValid() && CanMove()) {
-            
-            Direction dir = controller.GetRotationDirection();
+        if (controller.InputIsValid() ) { //&& CanMove()
+
+            Direction dir = controller.GetDirection();
             if(dir == Direction.Up) {
                 player.Jump();
             }
@@ -127,11 +127,11 @@ public class GameManager : MonoBehaviour {
             direction = -1;
         }
 
-        Debug.Log("direzione iniziale: " + destination);
+        
         zDestination = destination.z + (chosenRotation * direction);
         destination = new Vector3(0, 0, zDestination);
         foreach (GameObject esagono in esagoni) {
-            Debug.Log("From " + destination.z + " to " + zDestination);
+           
             esagono.transform.DORotate(destination, jumpTime,RotateMode.Fast);
         }     
         Invoke(nameof(Cooldown), jumpCooldown);

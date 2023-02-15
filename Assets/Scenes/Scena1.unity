@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 894129422, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
       propertyPath: rayCastDistance
-      value: 1.2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 894129422, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
       propertyPath: minHeightForMovement
@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1999260157673956171, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7
+      value: -2.683
       objectReference: {fileID: 0}
     - target: {fileID: 1999260157673956171, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -330,6 +330,14 @@ PrefabInstance:
     - target: {fileID: 5950435252658665928, guid: c15b4f27c45911c4f8a64295f9adaf4e, type: 3}
       propertyPath: m_Name
       value: InvisibleTerrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950435252658665931, guid: c15b4f27c45911c4f8a64295f9adaf4e, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950435252658665931, guid: c15b4f27c45911c4f8a64295f9adaf4e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5950435252658665935, guid: c15b4f27c45911c4f8a64295f9adaf4e, type: 3}
       propertyPath: m_RootOrder
