@@ -25,9 +25,7 @@ public class PlayerJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && canJump) {
-            Jump();
-        }
+
     }
 
     private void FixedUpdate() {
@@ -35,12 +33,12 @@ public class PlayerJump : MonoBehaviour
     }
 
 
-    void Jump() {
-        
+    public void Jump() {  
+
+        if(!canJump) return;
+
         canJump= false;
-        body.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
-        
-        
+        body.AddForce(jumpForce * Vector3.up, ForceMode.Impulse); 
     }
 
     bool IsFalling() {

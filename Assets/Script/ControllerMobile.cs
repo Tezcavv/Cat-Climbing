@@ -10,7 +10,8 @@ public class ControllerMobile : MonoBehaviour,IController
  
     private Vector3 firstPos;   //First touch position
     private Vector3 lastPos;   //Last touch position
-    private float dragDistance;  //minimum distance for a swipe to be registered
+    private float dragDistanceX;  //minimum distance for a swipe to be registered
+    private float dragDistanceY;
     private Touch touch;
 
     
@@ -19,7 +20,8 @@ public class ControllerMobile : MonoBehaviour,IController
     void Start() {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        dragDistance = Screen.width * screenPercentage / 100;
+        dragDistanceX = Screen.width * screenPercentage / 100;
+        dragDistanceY = Screen.height * screenPercentage / 100;
     }
 
     // Update is called once per frame
@@ -59,6 +61,11 @@ public class ControllerMobile : MonoBehaviour,IController
     }
     public Direction GetRotationDirection() {
 
+        if(lastPos.y - firstPos.y > 0 && lastPos.y - firstPos.y >= dragDistanceY) {
+            ResetPos();
+            return Direction.Up;
+        }
+
         if (lastPos.x - firstPos.x > 0) {
             ResetPos();
             return Direction.Right;
@@ -82,7 +89,8 @@ public class ControllerMobile : MonoBehaviour,IController
 
 
     private bool IsDraggedEnough() {
-        bool result = Mathf.Abs(lastPos.x - firstPos.x) > dragDistance;
+
+        bool result = Mathf.Abs(lastPos.x - firstPos.x) > dragDistanceX || Mathf.Abs(lastPos.y - firstPos.y) > dragDistanceY; 
 
         return result;
     }

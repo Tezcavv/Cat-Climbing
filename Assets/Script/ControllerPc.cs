@@ -21,6 +21,8 @@ public class ControllerPc : MonoBehaviour,IController
             return true;
         } else if (Input.GetKeyDown(KeyCode.A)) {
             return true; 
+        } else if (Input.GetKeyDown(KeyCode.Space)) {
+            return true;
         }
         return false;
     }
@@ -31,6 +33,8 @@ public class ControllerPc : MonoBehaviour,IController
             return Direction.Right;
         } else if (Input.GetKeyDown(KeyCode.A)) {
             return Direction.Left;
+        }else if (Input.GetKeyDown(KeyCode.Space)) {
+            return Direction.Up;
         }
         return Direction.Nothing;
     }

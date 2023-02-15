@@ -54,8 +54,15 @@ public class GameManager : MonoBehaviour {
         }
 
         if (controller.InputIsValid() && CanMove()) {
+            
             Direction dir = controller.GetRotationDirection();
-            RotateExagon(dir);
+            if(dir == Direction.Up) {
+                player.Jump();
+            }
+            else {
+                RotateExagon(dir);
+            }
+            
         }
 
         controller.ManagePause();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Direction { Left, Right, Nothing }
+public enum Direction { Left, Right, Up , Nothing }
 public interface IController {
 
     bool InputIsValid();
