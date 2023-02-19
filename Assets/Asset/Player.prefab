@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1999260157673956173}
   - component: {fileID: 1999260157673956172}
   - component: {fileID: 894129421}
-  - component: {fileID: 894129422}
+  - component: {fileID: 778483676}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -108,7 +108,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999260157673956175}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &894129422
+--- !u!114 &778483676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,8 +125,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1999260157673956175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7a6db2cc59e8274eafd0e97d996723d, type: 3}
+  m_Script: {fileID: 11500000, guid: 23cad39b8528be143a1810e627a534b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 20
-  canJump: 0
+  jumpForce: 8
+  descentForce: 3
+  currentState: 1
+  timeInAir: 1.21
+  FallRayCastDistance: 1
+  JumpRayCastDistance: 2.56

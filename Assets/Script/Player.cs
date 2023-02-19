@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private float jumpForce;
+    [SerializeField]
+    private float descentForce;
     Rigidbody body;
     IController controller;
     public PlayerState currentState;
@@ -16,7 +18,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float timeInAir = 0f;
     [SerializeField]
-    private float rayCastDistance = 1f;
+    private float FallRayCastDistance;
+    [SerializeField]
+    private float JumpRayCastDistance;
 
     private bool hasHit;
     // Start is called before the first frame update
@@ -24,6 +28,7 @@ public class Player : MonoBehaviour
     {
         controller = ControllerFactory.GetController();
         body = GetComponent<Rigidbody>();
+        fallBuffered = false;
     }
 
     // Update is called once per frame
@@ -69,14 +74,19 @@ public class Player : MonoBehaviour
 
     void UpdateMidAir() {
 
+        if (fallBuffered) {
+            fallBuffered = false;
+            SetToFalling();
+            return;
+        }
+
         if (!controller.InputIsValid())
             return;
 
         if (controller.GetDirection() != Direction.Down)
             return;
 
-        Debug.Log("Adesso Scendo");
-        currentState = PlayerState.FALLING;
+        SetToFalling();
 
     }
 
@@ -91,29 +101,43 @@ public class Player : MonoBehaviour
         currentState = PlayerState.JUMPING;
     }
 
+
+    private bool fallBuffered;
     void UpdateJumping() {
 
-        if (body.velocity.y >= 0)
+        if (controller.InputIsValid() && controller.GetDirection() == Direction.Down) {
+            fallBuffered = true;
+        }
+
+        if(Physics.Raycast(gameObject.transform.position, Vector3.down, JumpRayCastDistance, 1 << 6)) {
+            Debug.DrawRay(gameObject.transform.position, Vector3.down * FallRayCastDistance, Color.blue);
             return;
+        }
 
         body.isKinematic = true;
-        Invoke(nameof(SetToFalling), timeInAir);
         currentState = PlayerState.MIDDLE_AIR;
+
+        Invoke(nameof(SetToFalling), timeInAir);
 
     }
 
     private void SetToFalling() {
+
+        CancelInvoke(nameof(SetToFalling));
+        
         body.isKinematic = false;
+        body.AddForce(Vector3.down * descentForce,ForceMode.Impulse);
         currentState= PlayerState.FALLING;
     }
 
     void UpdateFalling() {
 
-        hasHit = Physics.Raycast(gameObject.transform.position, Vector3.down, rayCastDistance, 1 << 6);
-        Debug.DrawRay(gameObject.transform.position, Vector3.down * rayCastDistance, Color.red);
-
-        if (!hasHit)
+        if( !Physics.Raycast(gameObject.transform.position, Vector3.down, FallRayCastDistance, 1 << 6)) { 
+            Debug.DrawRay(gameObject.transform.position, Vector3.down * FallRayCastDistance, Color.red);
             return;
+        }
+        
+
 
         currentState = PlayerState.RUNNING;
     }
