@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cad39b8528be143a1810e627a534b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 8
+  jumpForce: 6.5
   descentForce: 3
   currentState: 1
-  timeInAir: 1.21
-  FallRayCastDistance: 1
-  JumpRayCastDistance: 2.56
+  timeInAir: 0.8
+  FallRayCastDistance: 1.25
+  JumpRayCastDistance: 2.7
