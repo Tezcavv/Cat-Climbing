@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7570ed63d27664aa0f7960ede7d44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobileScreenPercentage: 10
+  mobileScreenPercentage: 20
   exagonPrefab: {fileID: 6878943712340503996, guid: 5148afd56865f6d489208b12eb212fbb, type: 3}
   numEsagoni: 10
   chosenRotation: 60

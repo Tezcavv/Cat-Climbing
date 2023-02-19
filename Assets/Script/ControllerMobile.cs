@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControllerMobile : MonoBehaviour,IController
 {
 
-    private float screenPercentage = 20f;
+    private float screenPercentage = 10f;
  
     private Vector3 firstPos;   //First touch position
     private Vector3 lastPos;   //Last touch position
@@ -20,7 +20,7 @@ public class ControllerMobile : MonoBehaviour,IController
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 144;
         dragDistanceX = Screen.width * screenPercentage / 100;
-        dragDistanceY = Screen.height * screenPercentage / 150;
+        dragDistanceY = Screen.height * screenPercentage / 80;
     }
 
     // Update is called once per frame
