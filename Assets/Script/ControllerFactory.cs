@@ -18,6 +18,7 @@ public class ControllerFactory : MonoBehaviour
         }
         else {
             instance = new GameObject("Controller").AddComponent<ControllerMobile>();
+            
 
         }
 
