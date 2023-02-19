@@ -19,8 +19,8 @@ public class ControllerMobile : MonoBehaviour,IController
     void Start() {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 144;
-        dragDistanceX = Screen.width * screenPercentage / 100;
-        dragDistanceY = Screen.height * screenPercentage / 80;
+        dragDistanceX = Screen.width * screenPercentage / 100f;
+        dragDistanceY = Screen.height * screenPercentage / 100f;
     }
 
     // Update is called once per frame
@@ -65,7 +65,7 @@ public class ControllerMobile : MonoBehaviour,IController
             return Direction.Up;
         }
 
-        if (lastPos.y - firstPos.y < 0 && Mathf.Abs( lastPos.y - firstPos.y ) >= dragDistanceY) {
+        if (lastPos.y - firstPos.y < 0 && Mathf.Abs(lastPos.y - firstPos.y) >= dragDistanceY) {
             ResetPos();
             return Direction.Down;
         }

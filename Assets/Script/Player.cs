@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float JumpRayCastDistance;
 
-    private bool hasHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,19 +36,10 @@ public class Player : MonoBehaviour
         ManageStates();
     }
 
-    private void FixedUpdate() {
-
-    }
-
-
     public void Jump() {  
 
         body.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
         
-    }
-
-    bool IsFalling() {
-        return body.velocity.y < 0;
     }
 
     void ManageStates() {
@@ -136,8 +126,6 @@ public class Player : MonoBehaviour
             Debug.DrawRay(gameObject.transform.position, Vector3.down * FallRayCastDistance, Color.red);
             return;
         }
-        
-
 
         currentState = PlayerState.RUNNING;
     }
