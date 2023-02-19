@@ -5,7 +5,6 @@ using UnityEngine;
 public class ControllerMobile : MonoBehaviour,IController
 {
 
-
     private float screenPercentage;
  
     private Vector3 firstPos;   //First touch position
@@ -19,7 +18,7 @@ public class ControllerMobile : MonoBehaviour,IController
     // Start is called before the first frame update
     void Start() {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 144;
         dragDistanceX = Screen.width * screenPercentage / 100;
         dragDistanceY = Screen.height * screenPercentage / 100;
     }
@@ -64,6 +63,11 @@ public class ControllerMobile : MonoBehaviour,IController
         if(lastPos.y - firstPos.y > 0 && lastPos.y - firstPos.y >= dragDistanceY) {
             ResetPos();
             return Direction.Up;
+        }
+
+        if (lastPos.y - firstPos.y < 0 && Mathf.Abs( lastPos.y - firstPos.y ) >= dragDistanceY) {
+            ResetPos();
+            return Direction.Down;
         }
 
         if (lastPos.x - firstPos.x > 0) {

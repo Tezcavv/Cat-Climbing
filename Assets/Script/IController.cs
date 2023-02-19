@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Direction { Left, Right, Up , Nothing }
+public enum Direction { Left, Right, Up , Down, Nothing }
 public interface IController {
+
 
     bool InputIsValid();
     Direction GetDirection();

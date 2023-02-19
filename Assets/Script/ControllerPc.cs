@@ -1,20 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ControllerPc : MonoBehaviour,IController
 {
 
-    
-
-    void Start() {
-       
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
 
     public bool InputIsValid() {
         if (Input.GetKeyDown(KeyCode.D)) {
@@ -22,6 +13,8 @@ public class ControllerPc : MonoBehaviour,IController
         } else if (Input.GetKeyDown(KeyCode.A)) {
             return true; 
         } else if (Input.GetKeyDown(KeyCode.Space)) {
+            return true;
+        }else if (Input.GetKeyDown(KeyCode.S)) {
             return true;
         }
         return false;
@@ -35,7 +28,8 @@ public class ControllerPc : MonoBehaviour,IController
             return Direction.Left;
         }else if (Input.GetKeyDown(KeyCode.Space)) {
             return Direction.Up;
-        }
+        }else if (Input.GetKeyDown(KeyCode.S))
+            return Direction.Down;
         return Direction.Nothing;
     }
 

@@ -20,15 +20,15 @@ public class GameManager : MonoBehaviour {
     public float chosenRotation = 60f;
     List<GameObject> esagoni;
     public static bool isGamePaused;
-    private bool canJump = true;
+    private bool canRotate = true;
     GameObject First => esagoni[0];
     GameObject Last => esagoni.LastOrDefault();
     [SerializeField]
     float jumpTime;
     [Range(0, 2)]
-    public float jumpCooldown;
+    public float rotationCooldown;
     private Vector3 destination;
-    public PlayerJump player;
+    public Player player;
     public float maxHeightForMovement;
 
     private void Start() {
@@ -37,13 +37,8 @@ public class GameManager : MonoBehaviour {
 
         isGamePaused= false;
 
-        if (SystemInfo.deviceType == DeviceType.Desktop) {
-            controller = gameObject.AddComponent<ControllerPc>();
-        } else {
-            controller = gameObject.AddComponent<ControllerMobile>();
-            GetComponent<ControllerMobile>().ScreenPercentage=mobileScreenPercentage;
-        }
-        
+        controller = ControllerFactory.GetController();
+
         SpawnTerrain();
 
     }
@@ -53,13 +48,10 @@ public class GameManager : MonoBehaviour {
             ResetTerrain();
         }
 
-        if (controller.InputIsValid() ) { //&& CanMove()
+        if (controller.InputIsValid() ) {
 
             Direction dir = controller.GetDirection();
-            if(dir == Direction.Up) {
-                player.Jump();
-            }
-            else {
+            if(dir == Direction.Left || dir == Direction.Right) {
                 RotateExagon(dir);
             }
             
@@ -69,9 +61,6 @@ public class GameManager : MonoBehaviour {
         controller.ManageExit();
     }
 
-    public bool CanMove() {
-        return player.transform.position.y <= maxHeightForMovement;
-    }
 
     public void SpawnTerrain() {
         esagoni = new List<GameObject>();
@@ -114,10 +103,13 @@ public class GameManager : MonoBehaviour {
 
     public void RotateExagon(Direction dir) {
 
-        if (!canJump) {
+        if (!canRotate)
             return;
-        }
-        canJump = false;
+
+        if (player.currentState != PlayerState.RUNNING) 
+            return;
+        
+        canRotate = false;
         float zDestination;
         int direction = 0;
 
@@ -134,11 +126,11 @@ public class GameManager : MonoBehaviour {
            
             esagono.transform.DORotate(destination, jumpTime,RotateMode.Fast);
         }     
-        Invoke(nameof(Cooldown), jumpCooldown);
+        Invoke(nameof(Cooldown), rotationCooldown);
     }
 
     void Cooldown() {
-        canJump = true;
+        canRotate = true;
     }
 
 }
