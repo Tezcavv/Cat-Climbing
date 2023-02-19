@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
 
         if (controller.GetDirection() != Direction.Down)
             return;
+
         Debug.Log("Adesso Scendo");
         currentState = PlayerState.FALLING;
 

@@ -105,9 +105,8 @@ public class GameManager : MonoBehaviour {
 
         if (!canRotate)
             return;
-
-        if (player.currentState != PlayerState.RUNNING) 
-            return;
+        //        if (player.currentState != PlayerState.RUNNING) 
+        //  return;
         
         canRotate = false;
         float zDestination;
