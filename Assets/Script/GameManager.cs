@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour {
     
-    private IController controller;
+    IController controller;
 
     [SerializeField]
     float mobileScreenPercentage;
@@ -44,12 +44,13 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Update() {
+        //update GameManager
         if (First.transform.position.z <= -70) {
             ResetTerrain();
         }
 
         if (controller.InputIsValid() ) {
-
+            //Qui riesce a entrare solo quando PlayerState.FALLING
             Direction dir = controller.GetDirection();
             if(dir == Direction.Left || dir == Direction.Right) {
                 RotateExagon(dir);

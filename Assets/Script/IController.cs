@@ -10,7 +10,6 @@ public interface IController {
     bool InputIsValid();
     Direction GetDirection();
     void ManagePause();
-
     void ManageExit();
 
 }

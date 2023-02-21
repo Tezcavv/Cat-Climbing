@@ -35,6 +35,7 @@ public class ControllerMobile : MonoBehaviour,IController
     void UpdateTouch() {
 
         if (Input.touchCount != 1) {
+            ResetPos();
             return;
         }
 
@@ -60,21 +61,17 @@ public class ControllerMobile : MonoBehaviour,IController
     }
     public Direction GetDirection() {
 
-        if(lastPos.y - firstPos.y > 0 && lastPos.y - firstPos.y >= dragDistanceY) {
-            ResetPos();
+        if(lastPos.y - firstPos.y > 0 && lastPos.y - firstPos.y >= dragDistanceY) { 
             return Direction.Up;
         }
 
         if (lastPos.y - firstPos.y < 0 && Mathf.Abs(lastPos.y - firstPos.y) >= dragDistanceY) {
-            ResetPos();
             return Direction.Down;
         }
 
         if (lastPos.x - firstPos.x > 0) {
-            ResetPos();
             return Direction.Right;
         } else {
-            ResetPos();
             return Direction.Left;
         }
     }
@@ -94,9 +91,14 @@ public class ControllerMobile : MonoBehaviour,IController
 
     private bool IsDraggedEnough() {
 
-        bool result = Mathf.Abs(lastPos.x - firstPos.x) > dragDistanceX || Mathf.Abs(lastPos.y - firstPos.y) > dragDistanceY; 
+        if( Mathf.Abs(lastPos.x - firstPos.x) >= dragDistanceX) {
+            return true;
+        }
+        if (Mathf.Abs(lastPos.y - firstPos.y) >= dragDistanceY) {
+            return true;
+        }
 
-        return result;
+        return false;
     }
 
     public float ScreenPercentage {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ControllerFactory : MonoBehaviour
 {
-    [SerializeField]
     private static IController instance;
 
    public static IController GetController() {
@@ -14,18 +13,10 @@ public class ControllerFactory : MonoBehaviour
         }
 
         if (SystemInfo.deviceType == DeviceType.Desktop) {
-            instance = new GameObject("Controller").AddComponent<ControllerPc>();            
-        }
-        else {
+            instance = new GameObject("Controller").AddComponent<ControllerPc>();
+        } else {
             instance = new GameObject("Controller").AddComponent<ControllerMobile>();
-            
-
         }
-
         return instance;
-
     }
-
-
-   
 }

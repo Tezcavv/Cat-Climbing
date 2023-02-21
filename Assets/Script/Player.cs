@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float descentForce;
     Rigidbody body;
-    IController controller;
+    
     public PlayerState currentState;
 
     [SerializeField]
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float JumpRayCastDistance;
 
+    IController controller;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +32,10 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         ManageStates();
     }
+
 
     public void Jump() {  
 
@@ -43,21 +44,22 @@ public class Player : MonoBehaviour
     }
 
     void ManageStates() {
-
+        
         switch (currentState) {
-            case PlayerState.IDLE:
+            case PlayerState.IDLE: 
+                                    
             break;
             case PlayerState.RUNNING:
-            UpdateRunning();
+            UpdateRunning(); 
             break;
             case PlayerState.JUMPING:
             UpdateJumping();
-            break;
+                break;
             case PlayerState.MIDDLE_AIR:
             UpdateMidAir();
-            break;
+                break;
             case PlayerState.FALLING:
-            UpdateFalling();
+            UpdateFalling(); 
             break;
         }
     }
