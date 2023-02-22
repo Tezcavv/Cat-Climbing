@@ -17,10 +17,11 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float timeInAir = 0f;
+
+    [SerializeField]//all'altezza specificata passa da "in caduta" a "correndo"
+    private float fallingToRunningTreshold;
     [SerializeField]
-    private float FallRayCastDistance;
-    [SerializeField]
-    private float JumpRayCastDistance;
+    private float JumpHeight;
 
     IController controller;
     // Start is called before the first frame update
@@ -101,8 +102,8 @@ public class Player : MonoBehaviour
             fallBuffered = true;
         }
 
-        if(Physics.Raycast(gameObject.transform.position, Vector3.down, JumpRayCastDistance, 1 << 6)) {
-            Debug.DrawRay(gameObject.transform.position, Vector3.down * FallRayCastDistance, Color.blue);
+        if(Physics.Raycast(gameObject.transform.position, Vector3.down, JumpHeight, 1 << 6)) {
+            Debug.DrawRay(gameObject.transform.position, Vector3.down * fallingToRunningTreshold, Color.blue);
             return;
         }
 
@@ -124,8 +125,8 @@ public class Player : MonoBehaviour
 
     void UpdateFalling() {
 
-        if( !Physics.Raycast(gameObject.transform.position, Vector3.down, FallRayCastDistance, 1 << 6)) { 
-            Debug.DrawRay(gameObject.transform.position, Vector3.down * FallRayCastDistance, Color.red);
+        if( !Physics.Raycast(gameObject.transform.position, Vector3.down, fallingToRunningTreshold, 1 << 6)) { 
+            Debug.DrawRay(gameObject.transform.position, Vector3.down * fallingToRunningTreshold, Color.red);
             return;
         }
 
