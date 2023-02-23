@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update() {
         ManageStates();
+        Debug.DrawRay(gameObject.transform.position, Vector3.down * JumpHeight, Color.blue);
     }
 
 
@@ -103,7 +104,6 @@ public class Player : MonoBehaviour
         }
 
         if(Physics.Raycast(gameObject.transform.position, Vector3.down, JumpHeight, 1 << 6)) {
-            Debug.DrawRay(gameObject.transform.position, Vector3.down * fallingToRunningTreshold, Color.blue);
             return;
         }
 

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
     List<GameObject> esagoni;
     public static bool isGamePaused;
     private bool canRotate = true;
-    GameObject First => esagoni[0];
+    public GameObject First => esagoni[0];
     GameObject Last => esagoni.LastOrDefault();
     [SerializeField]
     float jumpTime;
