@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
     private int numEsagoni;
     public float chosenRotation = 60f;
     List<GameObject> esagoni;
-    public static bool isGamePaused;
+    public bool isGamePaused;
     private bool canRotate = true;
     public GameObject First => esagoni[0];
     GameObject Last => esagoni.LastOrDefault();
@@ -30,6 +30,15 @@ public class GameManager : MonoBehaviour {
     private Vector3 destination;
     public Player player;
     public float maxHeightForMovement;
+
+    public static GameManager Instance { get; private set; }
+
+    [SerializeField]
+    private UIPauseMenu pauseMenu;
+
+    private void Awake() {
+        Instance= this;
+    }
 
     private void Start() {
 
@@ -89,17 +98,19 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public static void Pause() {
+    public void TogglePause() {
 
         if (!isGamePaused) {
             Time.timeScale = 0f;
             isGamePaused = true;
+            pauseMenu.gameObject.SetActive(true);
             return;
         }
-
+        
         Time.timeScale = 1f;
         isGamePaused = false;
-        
+        pauseMenu.gameObject.SetActive(false);
+
     }
 
     public void RotateExagon(Direction dir) {

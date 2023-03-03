@@ -23,7 +23,7 @@ public class ObstacleCollider : MonoBehaviour
             return;
         }
 
-        GameManager.Pause();
+        GameManager.Instance.TogglePause();
     }
 
 }

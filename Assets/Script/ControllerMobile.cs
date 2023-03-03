@@ -55,8 +55,8 @@ public class ControllerMobile : MonoBehaviour,IController
         }
         lastPos = touch.position;
 
-        if (!IsDraggedEnough() && GameManager.isGamePaused) {
-            GameManager.Pause();
+        if (!IsDraggedEnough() && GameManager.Instance.isGamePaused) {
+            GameManager.Instance.TogglePause();
         }
     }
     public Direction GetDirection() {

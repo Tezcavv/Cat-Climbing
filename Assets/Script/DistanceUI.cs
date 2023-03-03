@@ -12,18 +12,17 @@ public class DistanceUI : MonoBehaviour
 
     private TextMeshProUGUI text;
 
-    [SerializeField]
-    private string initialText;
-
     private float traveledDistance = 0;
     private float frameDistance;
     private float previousZ;
+    private string initialText;
 
 
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
+        initialText= text.text;
         
     }
 
@@ -35,7 +34,7 @@ public class DistanceUI : MonoBehaviour
     }
 
     void UpdateText() {
-        if (GameManager.isGamePaused)
+        if (GameManager.Instance.isGamePaused)
             return;
 
         frameDistance = Mathf.Abs(gameManager.First.transform.position.z - previousZ);

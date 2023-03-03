@@ -41,7 +41,7 @@ public class ControllerPc : MonoBehaviour,IController
 
     public void ManagePause() {
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            GameManager.Pause();
+            GameManager.Instance.TogglePause();
         }
         
     }
