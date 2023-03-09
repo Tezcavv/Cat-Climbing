@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIPauseMenu : MonoBehaviour
 {
@@ -8,15 +9,19 @@ public class UIPauseMenu : MonoBehaviour
 
     private void Start() {
         gameObject.SetActive(false);
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = GameManager.Instance;
     }
     public void Resume() { //bottone chiama questa funzione
-        if (GameManager.Instance.isGamePaused) {
-            GameManager.Instance.TogglePause();
+        if (gameManager.isGamePaused) {
+            gameManager.TogglePause();
         }
     }
 
     public void Quit() {
         Application.Quit();
+    }
+
+    public void ToMainMenu() {
+        SceneManager.LoadScene(0);
     }
 }

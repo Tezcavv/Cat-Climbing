@@ -7,7 +7,7 @@ using UnityEngine;
 public class DistanceUI : MonoBehaviour
 {
 
-    [SerializeField]
+
     private GameManager gameManager;
 
     private TextMeshProUGUI text;
@@ -21,6 +21,7 @@ public class DistanceUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
         text = GetComponent<TextMeshProUGUI>();
         initialText= text.text;
         
@@ -34,7 +35,7 @@ public class DistanceUI : MonoBehaviour
     }
 
     void UpdateText() {
-        if (GameManager.Instance.isGamePaused)
+        if (gameManager.isGamePaused)
             return;
 
         frameDistance = Mathf.Abs(gameManager.First.transform.position.z - previousZ);
