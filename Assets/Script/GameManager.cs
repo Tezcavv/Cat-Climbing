@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour {
         destination= transform.rotation.eulerAngles;
 
         isGamePaused= false;
+        //TOFIX
+        Time.timeScale= 1.0f;
 
         controller = ControllerFactory.GetController();
 
