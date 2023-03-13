@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     void Update() {
         ManageStates();
         Debug.DrawRay(gameObject.transform.position, Vector3.down * JumpHeight, Color.blue);
+        Debug.LogError(currentState);
     }
 
 
@@ -104,6 +105,8 @@ public class Player : MonoBehaviour
         }
 
         if(Physics.Raycast(gameObject.transform.position, Vector3.down, JumpHeight, 1 << 6)) {
+            if (body.velocity.y == 0)
+                currentState = PlayerState.RUNNING;
             return;
         }
 

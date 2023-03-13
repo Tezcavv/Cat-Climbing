@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerFactory : MonoBehaviour
+public static class ControllerFactory
 {
     private static IController instance;
 
