@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -147,7 +147,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88732546}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1ba3675a75756a944be7ce7b060a8f42, type: 3}
@@ -474,22 +474,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1475789424}
     m_Modifications:
-    - target: {fileID: 778483676, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
-      propertyPath: jumpForce
-      value: 8.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 778483676, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
-      propertyPath: JumpHeight
-      value: 3.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 778483676, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
-      propertyPath: descentForce
-      value: 3.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 778483676, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
-      propertyPath: fallingToRunningTreshold
-      value: 1.17
-      objectReference: {fileID: 0}
     - target: {fileID: 1999260157673956171, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -555,7 +539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &190990037
 Transform:
   m_ObjectHideFlags: 0
@@ -1500,22 +1484,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1999260157673956175, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
   m_PrefabInstance: {fileID: 141002112}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &778483676 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 778483676, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
-  m_PrefabInstance: {fileID: 141002112}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778483669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23cad39b8528be143a1810e627a534b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &778483677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1999260157673956171, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
   m_PrefabInstance: {fileID: 141002112}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &778483678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 778483678, guid: 7081c65e3012be548a1a18a7c171cf4e, type: 3}
+  m_PrefabInstance: {fileID: 141002112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778483669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab269e61fafb4648a3767a43d210de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &800554939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,7 +2149,7 @@ MonoBehaviour:
   isGamePaused: 0
   jumpTime: 0.7
   rotationCooldown: 0.29
-  player: {fileID: 778483676}
+  player: {fileID: 778483678}
   maxHeightForMovement: 0
   pauseMenu: {fileID: 1903822747}
 --- !u!1 &1679760371
