@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public enum PlayerStateEnum { Run, Jump, Fall}
 
@@ -18,6 +19,7 @@ public class CharacterManager : MonoBehaviour {
     private float originalY;
     public float jumpHeight = 2f;
     public float jumpTime = 2f;
+    public float fallTime = 2f;
     public float midAirTime = 1f;
     public bool fallBuffered = false;
     #endregion
@@ -38,6 +40,8 @@ public class CharacterManager : MonoBehaviour {
             new PlayerState_Jump(this),
             new PlayerState_Fall(this)
         };
+
+        ChangeState(PlayerStateEnum.Run);
     }
 
     public void ChangeState(PlayerStateEnum state) {
@@ -49,12 +53,11 @@ public class CharacterManager : MonoBehaviour {
         }
     }
 
-    public void Jump() {
-        //if(stateMachine.CurrentState.)
-        transform.DOMoveY(jumpHeight, jumpTime);
-        ChangeState(PlayerStateEnum.Fall);
-
+    public IEnumerator ChangeStateInSecs(PlayerStateEnum state, float secDelay) {
+        yield return new WaitForSeconds(secDelay);
+        ChangeState(state);
     }
+
 
     // Update is called once per frame
     void Update() {

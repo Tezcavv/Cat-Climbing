@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1999260157673956173}
   - component: {fileID: 1999260157673956172}
   - component: {fileID: 894129421}
-  - component: {fileID: 778483676}
+  - component: {fileID: 778483678}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &778483676
+--- !u!114 &778483678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,12 +125,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1999260157673956175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23cad39b8528be143a1810e627a534b5, type: 3}
+  m_Script: {fileID: 11500000, guid: fab269e61fafb4648a3767a43d210de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 6.5
-  descentForce: 3
-  currentState: 1
-  timeInAir: 0.8
-  FallRayCastDistance: 1.25
-  JumpRayCastDistance: 2.7
+  jumpHeight: 2
+  jumpTime: 2
+  fallTime: 2
+  midAirTime: 1
+  fallBuffered: 0

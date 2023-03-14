@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
         }
 
         if (controller.InputIsValid() ) {
-            //Qui riesce a entrare solo quando PlayerState.FALLING
+           
             Direction dir = controller.GetDirection();
             if(dir == Direction.Left || dir == Direction.Right) {
                 RotateExagon(dir);

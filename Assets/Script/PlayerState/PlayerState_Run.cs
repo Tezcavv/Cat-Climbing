@@ -10,8 +10,7 @@ public class PlayerState_Run : PlayerState {
         
     }
     public override void Execute() {
-
-        if (owner.inputController.GetDirection() == Direction.Up)
+        if (controller.InputIsValid() && controller.GetDirection() == Direction.Up)
             owner.ChangeState(PlayerStateEnum.Jump);
 
     }
