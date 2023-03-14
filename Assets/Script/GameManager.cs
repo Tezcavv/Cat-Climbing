@@ -8,6 +8,8 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour {
     
+
+    //da pulire
     IController controller;
 
     [SerializeField]
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour {
     [Range(0, 2)]
     public float rotationCooldown;
     private Vector3 destination;
-    public Player player;
+    public CharacterManager player;
     public float maxHeightForMovement;
 
     public static GameManager Instance { get; private set; }
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour {
         //TOFIX
         Time.timeScale= 1.0f;
 
-        controller = ControllerFactory.GetController();
+        controller = ControllerFactory.Instance;
 
         SpawnTerrain();
 

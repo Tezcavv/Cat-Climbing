@@ -10,11 +10,8 @@ public class Movement : MonoBehaviour
 
     public float Speed { get { return speed; } set { speed = value; } }
 
-    [SerializeField]
-    private GameManager gameManager;
     // Start is called before the first frame update
     private void Start() {
-        gameManager=FindObjectOfType<GameManager>();
     }
     // Update is called once per frame
     void Update()
