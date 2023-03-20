@@ -13,7 +13,8 @@ public class PlayerState_Jump : PlayerState {
         
         owner.transform.DOMoveY(owner.transform.position.y + owner.jumpHeight, owner.jumpTime);
         owner.StartCoroutine(owner.ChangeStateInSecs(PlayerStateEnum.Fall, owner.jumpTime));
-
+        owner.animator.StartPlayback();
+        
     }
 
     public override void Execute() {

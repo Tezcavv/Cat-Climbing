@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class PlayerState_Run : PlayerState {
     }
 
     public override void Initialize() {
-        
+        owner.animator.StopPlayback();
     }
     public override void Execute() {
         if (controller.InputIsValid() && controller.GetDirection() == Direction.Up)

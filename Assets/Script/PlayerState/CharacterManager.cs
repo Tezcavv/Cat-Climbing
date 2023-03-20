@@ -22,6 +22,7 @@ public class CharacterManager : MonoBehaviour {
     public float fallTime = 2f;
     public float midAirTime = 1f;
     public bool fallBuffered = false;
+    public Animator animator;
     #endregion
 
     #region Properties
@@ -31,6 +32,7 @@ public class CharacterManager : MonoBehaviour {
 
 
     private void Start() {
+      
         originalY = transform.position.y;
 
         stateMachine = new StateMachine();

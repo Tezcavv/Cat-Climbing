@@ -11,7 +11,7 @@ public class FollowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.SetPositionAndRotation(objToFollow.transform.localPosition + offset, objToFollow.transform.localRotation);
+       
     }
 
     // Update is called once per frame

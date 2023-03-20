@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles: []
-  currentObstacles: 0
+  currentObstacles: 2
 --- !u!114 &4431991845522238687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  gameManager: {fileID: 0}
 --- !u!1 &7411405153509243077
 GameObject:
   m_ObjectHideFlags: 0

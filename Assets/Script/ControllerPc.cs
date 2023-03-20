@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class ControllerPc:IController
-{
+public class ControllerPc: MonoBehaviour,IController {
 
 
     public bool InputIsValid() {

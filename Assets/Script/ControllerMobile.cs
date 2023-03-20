@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerMobile:IController
+public class ControllerMobile:MonoBehaviour,IController
 {
 
     private float screenPercentage = 10f;
