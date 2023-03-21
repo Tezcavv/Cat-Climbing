@@ -15,12 +15,19 @@ public class CharacterManager : MonoBehaviour {
     public List<IState> states;
     #endregion
 
+    [SerializeField] private Ease ease;
+    public Ease Ease => ease;
+
     #region Fields
     private float originalY;
+    [Tooltip("Altezza del salto")]
     public float jumpHeight = 2f;
+    [Tooltip("Tempo di salto")]
     public float jumpTime = 2f;
+    [Tooltip("Tempo di Discesa")]
     public float fallTime = 2f;
-    public float midAirTime = 1f;
+    [Tooltip("Altezza minima per poter effettuare la discesa anticipata")]
+    public float heigthLimit = 2f;
     public bool fallBuffered = false;
     public Animator animator;
     #endregion
@@ -53,11 +60,6 @@ public class CharacterManager : MonoBehaviour {
                 return;
             }
         }
-    }
-
-    public IEnumerator ChangeStateInSecs(PlayerStateEnum state, float secDelay) {
-        yield return new WaitForSeconds(secDelay);
-        ChangeState(state);
     }
 
 
