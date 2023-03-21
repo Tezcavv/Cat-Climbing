@@ -18,7 +18,7 @@ public class PlayerState_Jump : PlayerState {
         timeInAir= 0;
 
         owner.transform.DOMoveY(owner.transform.position.y + owner.jumpHeight, owner.jumpTime)
-            .SetEase(owner.Ease)
+            .SetEase(owner.EaseJump)
             .onComplete += OnComplete; //DELEGATO, muy guapo
         
         

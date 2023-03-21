@@ -15,8 +15,10 @@ public class CharacterManager : MonoBehaviour {
     public List<IState> states;
     #endregion
 
-    [SerializeField] private Ease ease;
-    public Ease Ease => ease;
+    [SerializeField] private Ease easeJump;
+    [SerializeField] private Ease easeFall;
+    public Ease EaseJump => easeJump;
+    public Ease EaseFall => easeFall;
 
     #region Fields
     private float originalY;

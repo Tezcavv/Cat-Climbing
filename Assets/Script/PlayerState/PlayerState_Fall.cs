@@ -11,9 +11,9 @@ public class PlayerState_Fall : PlayerState {
 
     public override void Initialize() {
         if (owner.fallBuffered) {
-            owner.transform.DOMoveY(owner.OriginalY, owner.fallTime/2).SetEase(owner.Ease).onComplete += OnComplete;
+            owner.transform.DOMoveY(owner.OriginalY, owner.fallTime/2).SetEase(owner.EaseFall).onComplete += OnComplete;
         } else {
-            owner.transform.DOMoveY(owner.OriginalY, owner.fallTime).SetEase(owner.Ease).onComplete += OnComplete;
+            owner.transform.DOMoveY(owner.OriginalY, owner.fallTime).SetEase(owner.EaseFall).onComplete += OnComplete;
         }
 
         //owner.StartCoroutine(owner.ChangeStateInSecs(PlayerStateEnum.Run, owner.fallTime));

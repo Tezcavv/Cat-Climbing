@@ -12,11 +12,11 @@ public static class ControllerFactory {
                 return instance;
             }
 
-            if (SystemInfo.deviceType == DeviceType.Desktop) {
-                instance = new GameObject().AddComponent<ControllerPc>();
-            } else {
-                instance = new GameObject().AddComponent<ControllerMobile>();
-            }
+            //if (SystemInfo.deviceType == DeviceType.Desktop) {
+            //    instance = new GameObject().AddComponent<ControllerPc>();
+            //} else { }
+            instance = new GameObject().AddComponent<ControllerMobile>();
+            
             return instance;
         }
     }
