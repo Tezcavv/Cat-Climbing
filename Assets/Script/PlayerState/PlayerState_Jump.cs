@@ -20,9 +20,9 @@ public class PlayerState_Jump : PlayerState {
         owner.transform.DOMoveY(owner.transform.position.y + owner.jumpHeight, owner.jumpTime)
             .SetEase(owner.EaseJump)
             .onComplete += OnComplete; //DELEGATO, muy guapo
-        
-        
-        owner.animator.StartPlayback();
+
+
+        owner.animator.SetTrigger("RunToJump");
         
     }
 

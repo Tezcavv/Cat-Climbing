@@ -8,7 +8,7 @@ public class PlayerState_Run : PlayerState {
     }
 
     public override void Initialize() {
-        owner.animator.StopPlayback();
+        owner.animator.SetTrigger("FallToRun");
     }
     public override void Execute() {
         if (controller.InputIsValid() && controller.GetDirection() == Direction.Up)

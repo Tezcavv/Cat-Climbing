@@ -16,6 +16,8 @@ public class PlayerState_Fall : PlayerState {
             owner.transform.DOMoveY(owner.OriginalY, owner.fallTime).SetEase(owner.EaseFall).onComplete += OnComplete;
         }
 
+        owner.animator.SetTrigger("JumpToFall");
+
         //owner.StartCoroutine(owner.ChangeStateInSecs(PlayerStateEnum.Run, owner.fallTime));
 
     }
