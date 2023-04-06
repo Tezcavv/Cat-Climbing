@@ -130,8 +130,10 @@ public class GameManager : MonoBehaviour {
 
         if (dir == Direction.Left) {
             direction = 1;
+            player.animator.Play("JumpSinistra");
         } else if (dir == Direction.Right) {
             direction = -1;
+            player.animator.Play("JumpDestra");
         }
 
         

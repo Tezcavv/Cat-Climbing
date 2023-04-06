@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerState_Jump : PlayerState {
@@ -22,7 +23,7 @@ public class PlayerState_Jump : PlayerState {
             .onComplete += OnComplete; //DELEGATO, muy guapo
 
 
-        owner.animator.SetTrigger("RunToJump");
+        owner.animator.Play("Jump");
         
     }
 
