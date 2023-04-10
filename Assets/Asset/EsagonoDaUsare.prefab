@@ -307,7 +307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles: []
+  chosenRotation: 60
   currentObstacles: 2
+  jumpTime: 1
 --- !u!114 &4431991845522238687
 MonoBehaviour:
   m_ObjectHideFlags: 0

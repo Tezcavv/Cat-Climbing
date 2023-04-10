@@ -19,17 +19,14 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     [Range(1, 40)]
     private int numEsagoni;
-    public float chosenRotation = 60f;
-    List<GameObject> esagoni;
+
+    List<Exagon> esagoni;
     public bool isGamePaused;
     private bool canRotate = true;
-    public GameObject First => esagoni[0];
-    GameObject Last => esagoni.LastOrDefault();
-    [SerializeField]
-    float jumpTime;
+    public Exagon First => esagoni[0];
+    Exagon Last => esagoni.LastOrDefault();
     [Range(0, 2)]
     public float rotationCooldown;
-    private Vector3 destination;
     public CharacterManager player;
     public float maxHeightForMovement;
 
@@ -44,7 +41,6 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
 
-        destination= transform.rotation.eulerAngles;
 
         isGamePaused= false;
         //TOFIX
@@ -61,42 +57,61 @@ public class GameManager : MonoBehaviour {
         if (First.transform.position.z <= -70) {
             ResetTerrain();
         }
-
-        if (controller.InputIsValid() ) {
-           
-            Direction dir = controller.GetDirection();
-            if(dir == Direction.Left || dir == Direction.Right) {
-                RotateExagon(dir);
-            }
-            
-        }
+        HandleRotation();
 
         controller.ManagePause();
         controller.ManageExit();
     }
 
+    void HandleRotation() {
+
+        if (!canRotate)
+            return;
+
+        if (!controller.InputIsValid())
+            return;
+
+        Direction dir = controller.GetDirection();
+
+        if (dir != Direction.Left && dir != Direction.Right)
+            return;
+
+        canRotate = false;
+        esagoni.ForEach(exagon => exagon.Rotate(dir));
+
+        if (dir == Direction.Left) {
+            player.animator.Play("DodgeSinistra_FULL");
+        } else if (dir == Direction.Right) {
+            player.animator.Play("DodgeDestra_FULL");
+        }
+
+        Invoke(nameof(Cooldown), rotationCooldown);
+        
+
+    }
+
 
     public void SpawnTerrain() {
-        esagoni = new List<GameObject>();
+        esagoni = new List<Exagon>();
 
         GameObject temp;
         for (int i = 0; i < numEsagoni; i++) {
             temp = Instantiate(exagonPrefab, new Vector3(0, 0, i * 30), Quaternion.identity);
-            esagoni.Add(temp);
+            esagoni.Add(temp.GetComponent<Exagon>());
         }
     }
 
     public void ResetTerrain() {
         First.transform.position = Last.transform.position + new Vector3(0, 0, 30);
 
-        TerrainManager terrainManager;
+        Exagon exagon;
 
-        terrainManager = First.GetComponent<TerrainManager>();
-        terrainManager.DeactivateAllObstacles();
-        terrainManager.SetObstacles(terrainManager.currentObstacles);
+        exagon = First.GetComponent<Exagon>();
+        exagon.DeactivateAllObstacles();
+        exagon.SetObstacles(exagon.currentObstacles);
 
 
-        GameObject temp = First;
+        Exagon temp = First;
         esagoni.Remove(First);
         esagoni.Add(temp);
 
@@ -115,35 +130,6 @@ public class GameManager : MonoBehaviour {
         isGamePaused = false;
         pauseMenu.gameObject.SetActive(false);
 
-    }
-
-    public void RotateExagon(Direction dir) {
-
-        if (!canRotate)
-            return;
-        //        if (player.currentState != PlayerState.RUNNING) 
-        //  return;
-        
-        canRotate = false;
-        float zDestination;
-        int direction = 0;
-
-        if (dir == Direction.Left) {
-            direction = 1;
-            player.animator.Play("JumpSinistra");
-        } else if (dir == Direction.Right) {
-            direction = -1;
-            player.animator.Play("JumpDestra");
-        }
-
-        
-        zDestination = destination.z + (chosenRotation * direction);
-        destination = new Vector3(0, 0, zDestination);
-        foreach (GameObject esagono in esagoni) {
-           
-            esagono.transform.DORotate(destination, jumpTime,RotateMode.Fast);
-        }     
-        Invoke(nameof(Cooldown), rotationCooldown);
     }
 
     void Cooldown() {
