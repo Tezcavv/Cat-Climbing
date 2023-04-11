@@ -12,15 +12,19 @@ public class Exagon : MonoBehaviour
 
     public float chosenRotation = 60f;
     public int currentObstacles = 1;
-    private Vector3 destination;
+    private Vector3 oldRotation;
+    private Vector3 newRotation;
     public float jumpTime;
 
+    public Vector3 OldRotation => oldRotation;
+    public Vector3 NewRotation => newRotation;
     
     // Start is called before the first frame update
     void Start()
     {
-        //era attaccato al GameManager
-        destination = transform.rotation.eulerAngles;
+        
+        newRotation = transform.rotation.eulerAngles;
+        oldRotation = transform.rotation.eulerAngles;
 
         InitializeObstacles();
         DeactivateAllObstacles();
@@ -93,11 +97,12 @@ public class Exagon : MonoBehaviour
             direction= -1;
         }
 
-        zDestination = destination.z + (chosenRotation * direction);
-        destination = new Vector3(0, 0, zDestination);
+        oldRotation = new Vector3(newRotation.x,newRotation.y,newRotation.z);
 
-        transform.DORotate(destination, jumpTime, RotateMode.Fast);
+        zDestination = oldRotation.z + (chosenRotation * direction);
+        newRotation = new Vector3(0, 0, zDestination);
 
+        transform.DORotate(newRotation, jumpTime, RotateMode.Fast);
 
     }
     
