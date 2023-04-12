@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Exagon : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> obstacles;
+    private List<GameObject> levels;
 
     public float chosenRotation = 60f;
-    public int currentObstacles = 1;
     private Vector3 oldRotation;
     private Vector3 newRotation;
     public float jumpTime;
@@ -26,64 +26,31 @@ public class Exagon : MonoBehaviour
         newRotation = transform.rotation.eulerAngles;
         oldRotation = transform.rotation.eulerAngles;
 
-        InitializeObstacles();
-        DeactivateAllObstacles();
-        SetObstacles(currentObstacles);
+        DeactivateAlllevels();
+        PickALevel();
     }
 
-    void InitializeObstacles() {
-        obstacles = new List<GameObject>();
-        List<GameObject> listChildren = GetDirectChildren(gameObject);
-
-        foreach (GameObject plane in listChildren)
-        {
-            List<GameObject>listChildr2= GetDirectChildren(plane);
-
-            foreach (GameObject obstacle in listChildr2)
-            {
-                obstacles.Add(obstacle);
-            }
-        }
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         
     }
-    public void DeactivateAllObstacles()
+    public void DeactivateAlllevels()
     {
-        foreach(GameObject go in obstacles)
+        foreach(GameObject level in levels)
         {
-            go.SetActive(false);
+            level.SetActive(false);
         }
     }
 
-    public void SetObstacles(int numberOfObstacles) {
+    public void PickALevel() {
 
-        int numOfObstacles = obstacles.Count;
-        int randomIndex;
-
-         for (int i = 0; i < numberOfObstacles; i++)
-         {
-            randomIndex = Random.Range(0, numOfObstacles);
-            obstacles[randomIndex].SetActive(true);
-         }
-
+        int random = Random.Range(0, levels.Count);
+        levels[random].SetActive(true);
+       
     }
 
-    private List<GameObject> GetDirectChildren(GameObject gameObject)
-    {
-        List<GameObject> result = new List<GameObject>();
-        
-        for(int i = 0; i < gameObject.transform.childCount; i++)
-        {
-            GameObject gameObjectToAdd = gameObject.transform.GetChild(i).gameObject;
-            result.Add(gameObjectToAdd);
-        }
-        return result;
-    }
 
 
     public void Rotate(Direction dir) {

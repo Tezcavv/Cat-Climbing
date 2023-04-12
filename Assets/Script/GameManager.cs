@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
 
     private void Update() {
         //update GameManager
-        if (First.transform.position.z <= -70) {
+        if (First.transform.position.z <= -600) {
             ResetTerrain();
         }
         HandleRotation();
@@ -96,19 +96,19 @@ public class GameManager : MonoBehaviour {
 
         GameObject temp;
         for (int i = 0; i < numEsagoni; i++) {
-            temp = Instantiate(exagonPrefab, new Vector3(0, 0, i * 30), Quaternion.identity);
+            temp = Instantiate(exagonPrefab, new Vector3(0, 0, i * 500), Quaternion.identity);
             esagoni.Add(temp.GetComponent<Exagon>());
         }
     }
 
     public void ResetTerrain() {
-        First.transform.position = Last.transform.position + new Vector3(0, 0, 30);
+        First.transform.position = Last.transform.position + new Vector3(0, 0, 500);
 
         Exagon exagon;
 
         exagon = First.GetComponent<Exagon>();
-        exagon.DeactivateAllObstacles();
-        exagon.SetObstacles(exagon.currentObstacles);
+        exagon.DeactivateAlllevels();
+        exagon.PickALevel();
 
 
         Exagon temp = First;
