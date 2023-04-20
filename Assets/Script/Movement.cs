@@ -16,6 +16,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Time.deltaTime * speed * Vector3.back;
+        transform.position += GameManager.Instance.GameSpeed * Time.deltaTime * speed * Vector3.back;
     }
 }
