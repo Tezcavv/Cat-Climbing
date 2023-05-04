@@ -40,7 +40,7 @@ public class DistanceUI : MonoBehaviour
 
         frameDistance = Mathf.Abs(gameManager.First.transform.position.z - previousZ);
         traveledDistance += frameDistance/50;
-        text.text = initialText + traveledDistance.ToString("#");
+        text.text =  traveledDistance.ToString("#") + initialText;
         previousZ = gameManager.First.transform.position.z;
     }
 }

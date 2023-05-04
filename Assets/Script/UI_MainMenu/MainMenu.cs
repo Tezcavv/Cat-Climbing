@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
-{
+public class MainMenu : MonoBehaviour {
 
 
-   public void StartGame() {
+
+    public void StartGame() {
         //load game
         SceneManager.LoadScene(1);
 
-   }
+    }
+
 
     public void OpenWindow(GameObject gameObjectToOpen) {
         gameObjectToOpen.SetActive(true);
@@ -21,5 +22,7 @@ public class MainMenu : MonoBehaviour
         gameObjectToDisable.SetActive(false);
     }
 
-    
+
+
+
 }

@@ -22,6 +22,8 @@ public class UIPauseMenu : MonoBehaviour
     }
 
     public void ToMainMenu() {
+        Resume();
         SceneManager.LoadScene(0);
+        
     }
 }

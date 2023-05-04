@@ -69,7 +69,7 @@ public class Exagon : MonoBehaviour
         zDestination = oldRotation.z + (chosenRotation * direction);
         newRotation = new Vector3(0, 0, zDestination);
 
-        transform.DORotate(newRotation, jumpTime, RotateMode.Fast);
+        transform.DORotate(newRotation, jumpTime*GameManager.Instance.GameSpeed, RotateMode.Fast);
 
     }
     

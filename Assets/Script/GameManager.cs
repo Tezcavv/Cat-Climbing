@@ -30,6 +30,14 @@ public class GameManager : MonoBehaviour {
     public CharacterManager player;
     public float maxHeightForMovement;
 
+
+    //game difficutly
+    [SerializeField]private float gameSpeed = 1;
+    public float GameSpeed => gameSpeed;
+    private float timer = 0;
+    [SerializeField] private float difficultyIncreaseInterval = 30f;
+
+
     public static GameManager Instance { get; private set; }
 
     [SerializeField]
@@ -57,10 +65,19 @@ public class GameManager : MonoBehaviour {
         if (First.transform.position.z <= -600) {
             ResetTerrain();
         }
+        HandleGameSpeed();
         HandleRotation();
 
         controller.ManagePause();
         controller.ManageExit();
+    }
+
+    void HandleGameSpeed() {
+        timer += Time.deltaTime;
+        if(timer >= difficultyIncreaseInterval) {
+            timer = 0;
+            gameSpeed += 0.1f;
+        }
     }
 
     void HandleRotation() {
