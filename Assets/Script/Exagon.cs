@@ -14,7 +14,7 @@ public class Exagon : MonoBehaviour
     public float chosenRotation = 60f;
     private Vector3 oldRotation;
     private Vector3 newRotation;
-    public float jumpTime;
+    private float dodgeTime;
 
     public Vector3 OldRotation => oldRotation;
     public Vector3 NewRotation => newRotation;
@@ -22,7 +22,7 @@ public class Exagon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        dodgeTime = GameManager.Instance.sidewaysJumpDuration;
         newRotation = transform.rotation.eulerAngles;
         oldRotation = transform.rotation.eulerAngles;
 

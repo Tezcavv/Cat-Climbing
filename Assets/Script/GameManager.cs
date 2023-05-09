@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
     public float rotationCooldown;
     public CharacterManager player;
     public float maxHeightForMovement;
+    public float sidewaysJumpDuration;
 
 
     //game difficutly
@@ -106,6 +107,8 @@ public class GameManager : MonoBehaviour {
         
 
     }
+
+
 
 
     public void SpawnTerrain() {
