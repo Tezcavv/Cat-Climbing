@@ -9,6 +9,7 @@ public class PlayerState_Run : PlayerState {
 
     public override void Initialize() {
         owner.animator.Play("Run");
+        owner.animator.ResetTrigger("DodgeFall");
     }
     public override void Execute() {
         if (controller.InputIsValid() && controller.GetDirection() == Direction.Up)

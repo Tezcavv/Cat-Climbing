@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2138,8 +2138,8 @@ MonoBehaviour:
   easeJump: 6
   easeFall: 5
   jumpHeight: 2
-  jumpTime: 0.8
-  fallTime: 0.8
+  jumpTime: 0.4
+  fallTime: 0.4
   heigthLimit: 0.4
   fallBuffered: 0
   animator: {fileID: 792477720}
@@ -2155,7 +2155,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.97, y: 1.37, z: 2.13}
-  m_Center: {x: 0, y: 1.11, z: 0}
+  m_Center: {x: 0, y: 1.39, z: 0.35}
 --- !u!54 &792477719
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3013,6 +3013,7 @@ MonoBehaviour:
   rotationCooldown: 0.29
   player: {fileID: 792477717}
   maxHeightForMovement: 0
+  sidewaysJumpDuration: 0.5
   gameSpeed: 1
   difficultyIncreaseInterval: 30
   pauseMenu: {fileID: 1903822747}
