@@ -1,9 +1,11 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour {
@@ -44,12 +46,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private UIPauseMenu pauseMenu;
 
+
     private void Awake() {
         Instance= this;
     }
 
     private void Start() {
-
+        
 
         isGamePaused= false;
         //TOFIX
@@ -60,6 +63,10 @@ public class GameManager : MonoBehaviour {
         SpawnTerrain();
 
     }
+
+
+
+
 
     private void Update() {
         //update GameManager

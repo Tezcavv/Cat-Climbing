@@ -1,10 +1,6 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Exagon : MonoBehaviour
 {
@@ -48,6 +44,7 @@ public class Exagon : MonoBehaviour
 
         int random = Random.Range(0, levels.Count);
         levels[random].SetActive(true);
+
        
     }
 
