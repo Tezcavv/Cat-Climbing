@@ -51,7 +51,7 @@ public class CharacterManager : MonoBehaviour {
             new PlayerState_Jump(this),
             new PlayerState_Fall(this)
         };
-
+        animator = GetComponent<Animator>();
         ChangeState(PlayerStateEnum.Run);
     }
 
