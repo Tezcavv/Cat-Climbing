@@ -6,6 +6,10 @@ public class CoinManager : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 100f;
 
+    private void Start() {
+        
+    }
+
     private void Update()
     {
         // Ruota la moneta lungo l'asse Y a una velocità costante
