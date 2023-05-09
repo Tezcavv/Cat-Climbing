@@ -2139,7 +2139,7 @@ MonoBehaviour:
   easeFall: 5
   jumpHeight: 2
   jumpTime: 0.8
-  fallTime: 0.8
+  fallTime: 0.5
   heigthLimit: 0.4
   fallBuffered: 0
   animator: {fileID: 792477720}
