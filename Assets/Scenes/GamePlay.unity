@@ -2140,8 +2140,7 @@ MonoBehaviour:
   jumpHeight: 2
   jumpTime: 0.4
   fallTime: 0.4
-
-  heigthLimit: 0.4
+  heigthLimit: 2
   fallBuffered: 0
   animator: {fileID: 792477720}
 --- !u!65 &792477718
