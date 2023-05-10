@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 100f;
 
-
+    
     private void Start() {
         
     }
@@ -21,6 +21,7 @@ public class Coin : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             CurrencyManager.Instance.OnCoinPickup?.Invoke();
+            AudioManager.Instance.OnCoinPicked?.Invoke();
             gameObject.SetActive(false);
         }
 

@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour {
             player.animator.Play("DodgeDestra_FULL");
         }
 
+        AudioManager.Instance.OnDodgeSwipe?.Invoke();
+
         Invoke(nameof(Cooldown), rotationCooldown);
         
 
