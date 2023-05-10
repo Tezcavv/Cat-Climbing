@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6516399700171685186}
+  - component: {fileID: 5215717354046588775}
   m_Layer: 0
   m_Name: Livello8
   m_TagString: Untagged
@@ -51,6 +52,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5215717354046588775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99585814738174594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 4554979016796790381}
 --- !u!1 &264070787009149875
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +74,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 416152649760809637}
+  - component: {fileID: 4673803245703253423}
   m_Layer: 0
   m_Name: Livello9
   m_TagString: Untagged
@@ -123,6 +138,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4673803245703253423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264070787009149875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 2729149472447985166}
 --- !u!1 &292176823021381406
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 159708557010225794}
+  - component: {fileID: 2798712337555343628}
   m_Layer: 0
   m_Name: Livello0
   m_TagString: Untagged
@@ -532,6 +561,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2798712337555343628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293947386669973366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 1346347818470125721}
 --- !u!1 &2365225887620864146
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +583,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8036024585321112041}
+  - component: {fileID: 1500725018256039529}
   m_Layer: 0
   m_Name: Livello1
   m_TagString: Untagged
@@ -594,6 +637,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500725018256039529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365225887620864146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 7271435871155620615}
 --- !u!1 &2532612639569908015
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &770964399627820726
 Transform:
   m_ObjectHideFlags: 0
@@ -935,13 +991,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2465817640615125663}
+  - component: {fileID: 3453880240227516058}
   m_Layer: 0
   m_Name: Livello5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2465817640615125663
 Transform:
   m_ObjectHideFlags: 0
@@ -958,6 +1015,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3453880240227516058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3088496037741814545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 3294950862483213449}
 --- !u!1 &3100918125369145339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752980021220863558}
+  - component: {fileID: 8904227574942032064}
   m_Layer: 0
   m_Name: Livello3
   m_TagString: Untagged
@@ -1136,6 +1207,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8904227574942032064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679670529977881228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 5365616182377402061}
 --- !u!1 &3825299102781099107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4187412944392769932}
+  - component: {fileID: 7838780560869941471}
   m_Layer: 0
   m_Name: Livello2
   m_TagString: Untagged
@@ -1461,6 +1546,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7838780560869941471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4599178199786532730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 3825299102781099107}
 --- !u!1 &4927806394285633230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1133238823470160968
 Transform:
   m_ObjectHideFlags: 0
@@ -1683,13 +1781,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6666030822446774614}
+  - component: {fileID: 4701547417007601026}
   m_Layer: 0
   m_Name: Livello6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6666030822446774614
 Transform:
   m_ObjectHideFlags: 0
@@ -1721,6 +1820,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4701547417007601026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634431879507422666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 292176823021381406}
 --- !u!1 &6021508479012127489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,7 +2059,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
+  - {fileID: 2365225887620864146}
+  - {fileID: 4599178199786532730}
+  - {fileID: 3679670529977881228}
+  - {fileID: 7793773475066537920}
+  - {fileID: 3088496037741814545}
   - {fileID: 5634431879507422666}
+  - {fileID: 99585814738174594}
+  - {fileID: 264070787009149875}
+  firstLevel: {fileID: 2293947386669973366}
   chosenRotation: 60
 --- !u!114 &4431991845522238687
 MonoBehaviour:
@@ -2113,6 +2233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2817493419505877665}
+  - component: {fileID: 2936586924473201376}
   m_Layer: 0
   m_Name: Livello4
   m_TagString: Untagged
@@ -2152,6 +2273,19 @@ Transform:
   m_Father: {fileID: 6070072128315995910}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2936586924473201376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793773475066537920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825821063b5803a4994f11b4ecaab1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinFolderGameObject: {fileID: 9148506428914656217}
 --- !u!1 &8158677342207358971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,7 +2951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d11d2dd0718041f4789af59d3edd677d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d11d2dd0718041f4789af59d3edd677d, type: 3}

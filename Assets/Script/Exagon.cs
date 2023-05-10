@@ -1,21 +1,21 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Exagon : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> levels;
 
+    [SerializeField] private GameObject firstLevel;
+
     public float chosenRotation = 60f;
     private Vector3 oldRotation;
     private Vector3 newRotation;
     private float dodgeTime;
 
+    private bool fl = false;
+    public bool isFirstLevel { get => fl; set => fl = value; }
     public Vector3 OldRotation => oldRotation;
     public Vector3 NewRotation => newRotation;
     
@@ -27,7 +27,12 @@ public class Exagon : MonoBehaviour
         oldRotation = transform.rotation.eulerAngles;
 
         DeactivateAlllevels();
-        PickALevel();
+        if (isFirstLevel)
+            PickFirstLevel();
+        else
+            PickALevel();
+        
+     
     }
 
 
@@ -48,7 +53,8 @@ public class Exagon : MonoBehaviour
 
         int random = Random.Range(0, levels.Count);
         levels[random].SetActive(true);
-       
+        levels[random].GetComponent<ExagonLevel>().ResetCoins();
+
     }
 
 
@@ -72,5 +78,8 @@ public class Exagon : MonoBehaviour
         transform.DORotate(newRotation, dodgeTime*GameManager.Instance.GameSpeed, RotateMode.Fast);
 
     }
-    
+
+    internal void PickFirstLevel() {
+        firstLevel.SetActive(true);
+    }
 }

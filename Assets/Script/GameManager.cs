@@ -1,9 +1,11 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour {
@@ -44,12 +46,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private UIPauseMenu pauseMenu;
 
+
     private void Awake() {
         Instance= this;
     }
 
     private void Start() {
-
+        
 
         isGamePaused= false;
         //TOFIX
@@ -60,6 +63,10 @@ public class GameManager : MonoBehaviour {
         SpawnTerrain();
 
     }
+
+
+
+
 
     private void Update() {
         //update GameManager
@@ -115,8 +122,11 @@ public class GameManager : MonoBehaviour {
         esagoni = new List<Exagon>();
 
         GameObject temp;
-        for (int i = 0; i < numEsagoni; i++) {
-            temp = Instantiate(exagonPrefab, new Vector3(0, 0, i * 500), Quaternion.identity);
+        temp = Instantiate(exagonPrefab, new Vector3(0, 0, 200), Quaternion.identity);
+        temp.GetComponent<Exagon>().isFirstLevel= true;
+        esagoni.Add(temp.GetComponent<Exagon>());
+        for (int i = 1; i < numEsagoni; i++) {
+            temp = Instantiate(exagonPrefab, new Vector3(0, 0, 200 + (i * 500)), Quaternion.identity);
             esagoni.Add(temp.GetComponent<Exagon>());
         }
     }
