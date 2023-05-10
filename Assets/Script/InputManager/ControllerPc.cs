@@ -5,7 +5,9 @@ using UnityEngine.Rendering;
 
 public class ControllerPc: MonoBehaviour,IController {
 
-
+    private void Start() {
+        DontDestroyOnLoad(gameObject);
+    }
     public bool InputIsValid() {
         if (Input.GetKeyDown(KeyCode.D)) {
             return true;

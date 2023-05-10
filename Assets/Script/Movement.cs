@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     private float speed;
+    public Vector3 lastPos= Vector3.zero;
 
     public float Speed { get { return speed; } set { speed = value; } }
 
@@ -16,6 +17,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        lastPos= transform.position;
         transform.position += GameManager.Instance.GameSpeed * Time.deltaTime * speed * Vector3.back;
     }
 }

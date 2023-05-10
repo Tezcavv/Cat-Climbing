@@ -12,8 +12,9 @@ public class DistanceUI : MonoBehaviour
 
     private TextMeshProUGUI text;
 
-    private float traveledDistance = 0;
+    private static float traveledDistance = 0;
     private float frameDistance;
+    private float currentZ;
     private float previousZ;
     private string initialText;
 
@@ -38,9 +39,11 @@ public class DistanceUI : MonoBehaviour
         if (gameManager.isGamePaused)
             return;
 
+        currentZ = gameManager.First.transform.position.z;
+        previousZ = gameManager.First.GetComponent<Movement>().lastPos.z;
+
         frameDistance = Mathf.Abs(gameManager.First.transform.position.z - previousZ);
         traveledDistance += frameDistance/50;
         text.text =  traveledDistance.ToString("#") + initialText;
-        previousZ = gameManager.First.transform.position.z;
     }
 }

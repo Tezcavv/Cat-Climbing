@@ -2068,7 +2068,7 @@ MonoBehaviour:
   - {fileID: 99585814738174594}
   - {fileID: 264070787009149875}
   firstLevel: {fileID: 2293947386669973366}
-  chosenRotation: 60
+  chosenRotation: 59.03
 --- !u!114 &4431991845522238687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2082,6 +2082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  lastPos: {x: 0, y: 0, z: 0}
 --- !u!1 &7271435871155620615
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public static class ControllerFactory {
             //if (SystemInfo.deviceType == DeviceType.Desktop) {
             //    instance = new GameObject().AddComponent<ControllerPc>();
             //} else {
-                instance = new GameObject().AddComponent<ControllerMobile>();
+                instance = new GameObject("InputController").AddComponent<ControllerMobile>();
             //}
             
             return instance;

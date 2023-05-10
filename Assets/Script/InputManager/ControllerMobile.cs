@@ -17,6 +17,7 @@ public class ControllerMobile:MonoBehaviour,IController
 
     // Start is called before the first frame update
     void Start() {
+        DontDestroyOnLoad(gameObject);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 144;
         dragDistanceX = Screen.width * screenPercentage / 100f;
