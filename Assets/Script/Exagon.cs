@@ -14,7 +14,8 @@ public class Exagon : MonoBehaviour
     private Vector3 newRotation;
     private float dodgeTime;
 
-    public bool isFirstLevel = false;
+    private bool fl = false;
+    public bool isFirstLevel { get => fl; set => fl = value; }
     public Vector3 OldRotation => oldRotation;
     public Vector3 NewRotation => newRotation;
     
