@@ -122,8 +122,11 @@ public class GameManager : MonoBehaviour {
         esagoni = new List<Exagon>();
 
         GameObject temp;
-        for (int i = 0; i < numEsagoni; i++) {
-            temp = Instantiate(exagonPrefab, new Vector3(0, 0, i * 500), Quaternion.identity);
+        temp = Instantiate(exagonPrefab, new Vector3(0, 0, 200), Quaternion.identity);
+        temp.GetComponent<Exagon>().isFirstLevel= true;
+        esagoni.Add(temp.GetComponent<Exagon>());
+        for (int i = 1; i < numEsagoni; i++) {
+            temp = Instantiate(exagonPrefab, new Vector3(0, 0, 200 + (i * 500)), Quaternion.identity);
             esagoni.Add(temp.GetComponent<Exagon>());
         }
     }

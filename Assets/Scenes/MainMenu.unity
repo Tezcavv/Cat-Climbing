@@ -3041,6 +3041,7 @@ GameObject:
   - component: {fileID: 731210525}
   - component: {fileID: 731210527}
   - component: {fileID: 731210526}
+  - component: {fileID: 731210528}
   m_Layer: 5
   m_Name: Text_SoftCurrency
   m_TagString: Untagged
@@ -3165,6 +3166,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731210524}
   m_CullTransparentMesh: 1
+--- !u!114 &731210528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731210524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cd83f0f236c7e44b7cacb8c19ef168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &753846173
 GameObject:
   m_ObjectHideFlags: 0
@@ -6788,6 +6801,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnCoinPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCoinUpdate:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1666206782
