@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour {
         if (First.transform.position.z <= -600) {
             ResetTerrain();
         }
-       if(gameSpeed < 2) HandleGameSpeed();
+       if(gameSpeed < 1.6f) HandleGameSpeed();
         HandleRotation();
 
         controller.ManagePause();
