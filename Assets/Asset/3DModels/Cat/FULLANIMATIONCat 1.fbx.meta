@@ -3,7 +3,12 @@ guid: d2a255d1139db844fa9021cf3fa93b51
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darky
+    second: {fileID: 2100000, guid: e1161b379a8e801488a241ac5e6b8d41, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
